@@ -280,7 +280,7 @@ function filterVehicles() {
 
 ## BAZA PODATAKA
 
-MySQL je popularni relacioni sistem upravljanja bazama podataka koji omogućava efikasno upravljanje podacima putem SQL upita. <BR>
+MySQL je popularni relacioni sistem upravljanja bazama podataka koji omogućava efikasno upravljanje podacima putem SQL upita. 
 
 ![Struktura baze podataka](PIS_Voznipark\images\baza.png)
 
