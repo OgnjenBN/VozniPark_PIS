@@ -35,15 +35,45 @@ Backend se sastoji od nekoliko ključnih komponenti: <br>
 
 **Modeli** podataka reprezentuju strukturu podataka koji se koriste u aplikaciji. Na primjer, model za vozača predstavlja klasu koja definiše strukturu tabele “vozaci” u bazi podataka. Ispod tabele definisan je odnos sa modelom “RadniNalog” koji omogućava navigaciju između vozača i njegovih radnih naloga. Varijabla back_populates='vozac' omogućava obostranu vezu između dva modela. <br>
 
-```
-@router.post("/", response_model=VoziloOut)
-def create_vozilo(vozilo: VoziloCreate, db: Session = Depends(get_db)):
-db_vozilo = Vozilo(**vozilo.dict())
-db.add(db_vozilo)
-db.commit()
-db.refresh(db_vozilo)
-return db_vozilo
-```
 
+```
+class Vozac(Base):
+    __tablename__ = 'vozaci'
 
- 
+    id = Column(Integer, primary_key=True, index=True)
+    ime = Column(String(30), index=True)
+    prezime = Column(String(30), index=True)
+    broj_vozacke_dozvole = Column(String(15), unique=True)
+    datum_isteka_dozvole = Column(Date)
+    kategorije_vozacke_dozvole = Column(String(15))
+    kontakt_informacije = Column(String(100))
+    ogranicenja_za_voznju = Column(String(50))
+    status = Column(Enum('aktivno', 'neaktivno', name='status_vozaca'), default='aktivno')
+
+    radni_nalozi = relationship('RadniNalog', back_populates='vozac')
+```
+<br>
+**ŠEME** za radne naloge definišu strukturu i validaciju podataka pomoću Pydantica. Klase se kreiraju kao naslednici BaseModel iz Pydantica i predstavljaju modele podataka sa atributima i validacionim pravilima. Enumeracija (StatusRadnogNalogaEnum) definiše tri moguća statusa radnog naloga: otvoren, u toku, i završen. Ovo osigurava da atribut statusa može imati samo dozvoljene vrijednosti. Bazična klasa (RadniNalogBase) sadrži osnovne atribute radnog naloga, uključujući ID vozila i vozača, opis zadatka, datum i vreme izdavanja, rok završavanja i status. Klasa za kreiranje (RadniNalogCreate) nasleđuje bazičnu klasu i koristi se za validaciju prilikom kreiranja novih radnih naloga. Klasa za izlazne podatke (RadniNalogOut) dodaje dodatni atribut id i koristi se za povratne podatke prema klijentu. Ova struktura omogućava striktno definisanje i validaciju podataka, čineći aplikaciju sigurnijom i pouzdanijom. <br>
+```
+ class StatusRadnogNalogaEnum(str, Enum):
+    otvoren = 'otvoren'
+    u_toku = 'u toku'
+    zavrsen = 'zavrsen'
+
+class RadniNalogBase(BaseModel):
+    vozilo_id: int
+    vozac_id: int
+    opis_zadatka: str
+    datum_i_vrijeme_izdavanja: datetime
+    rok_zavrsavanja: datetime
+    status: StatusRadnogNalogaEnum
+
+class RadniNalogCreate(RadniNalogBase):
+    pass
+
+class RadniNalogOut(RadniNalogBase):
+    id: int
+    
+    class Config:
+       from_attributes = True
+```
