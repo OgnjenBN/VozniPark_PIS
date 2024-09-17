@@ -149,3 +149,76 @@ def read_root():
 
 app.include_router(api_router)
 ```
+
+## FRONTEND
+
+Frontend aplikacija je ključna komponenta korisničkog interfejsa (UI) i odgovorna je za interakciju korisnika sa aplikacijom. U ovom projektu, frontend je razvijen koristeći HTML, CSS, JavaScript, a za brzo i responzivno oblikovanje korišćen je Bootstrap framework. Kroz kombinaciju ovih tehnologija omogućeno je kreiranje jednostavnog i intuitivnog interfejsa za rad sa voznim parkom. <br>
+
+HTML (HyperText Markup Language): HTML je korišćen za definisanje strukture web stranice. Svaka stranica sadrži osnovne elemente poput zaglavlja, tabela, formi i dugmadi koje korisnici koriste za pregled podataka i interakciju sa sistemom. <br>
+
+```
+<table class="table">
+                <thead>
+                    <tr>
+                        <th scope="col">R.br.</th>
+                        <th scope="col">Marka</th>
+                        <th scope="col">Model</th>
+                        <th scope="col">Reg.</th>
+                        <th scope="col">Istek reg.</th>
+                        <th scope="col">Godište</th>
+                        <th scope="col">Gorivo</th>
+                        <th scope="col">Status</th>
+                        <th scope="col">Izmjeni</th>
+                        <th scope="col">Izbriši</th>
+                    </tr>
+                </thead>
+                <tbody id="tableBody">
+
+                </tbody>
+            </table>
+```
+
+Sledećа  kod prikazuju HTML koda za filterisanje vozila putem padajućeg menija.
+```
+<form id="filterFormVozila">
+        <label for="filterBrand">Marka:</label>
+        <select id="filterBrand" onchange="filterVehicles()">
+                    <option value="all">Sve marke</option>
+                    <option value="Volkswagen">Volkswagen</option>
+                    <option value="BMW">BMW</option>
+                    <option value="Audi">Audi</option>
+                    <option value="Mercedes">Mercedes</option>
+                    <option value="Toyota">Toyota</option>
+                    <option value="Ford">Ford</option>
+                    <option value="Skoda">Skoda</option>
+                    <option value="Seat">Seat</option>
+                    <option value="Reanult">Renault</option>
+                    <option value="Honda">Honda</option>
+                    <option value="Opel">Opel</option>
+                    <option value="Peugeot">Peugeot</option>
+                    <option value="Dacia">Dacia</option>
+        </select>
+```
+
+**CSS** (Cascading Style Sheets): CSS je korišćen za stilizovanje HTML elemenata i kreiranje vizualno privlačnog i korisnički prijatnog interfejsa. Pomoću CSS-a definisane su boje, fontovi, raspored elemenata, kao i prilagođeni izgled različitih komponenata.
+
+Takođe, implementirali smo opciju “Tamnog režima” gdje korisnik može izabrati opciju da li će interfejs biti prikazan u podrazumijevanoj bijeloj boji ili crnoj boji gdje manje zamara oči. U HTML smo dodali samo dugme za tamni režim, dok u CSS (kao I JavaScript-u) smo dodali kod za implementiranje tamnog režima.
+```
+body.dark-mode {
+    --background-color: #333;
+    --text-color: #eee;
+    --table-bg: #444;
+    --table-border: #555;
+}
+
+body.dark-mode table {
+    background-color: var(--table-bg);
+    border-color: var(--table-border);
+}
+
+body.dark-mode th, body.dark-mode td {
+    border-color: var(--table-border);
+    background-color: var(--table-bg);
+    color: var(--text-color);
+}
+```
