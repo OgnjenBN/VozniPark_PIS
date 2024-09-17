@@ -276,7 +276,7 @@ function filterVehicles() {
 }
 ```
 
-##BAZA PODATAKA
+## BAZA PODATAKA
 
 MySQL je popularni relacioni sistem upravljanja bazama podataka koji omogućava efikasno upravljanje podacima putem SQL upita. <BR>
 
@@ -284,3 +284,14 @@ MySQL je popularni relacioni sistem upravljanja bazama podataka koji omogućava 
 
 
 U projektu “Vozni Park”, veza sa bazom podataka ostvaruje se kroz **.env** fajl koji sadrži potrebne informacije kao što su link do baze, korisničko ime i lozinka. Ove informacije se koriste za uspostavljanje veze sa bazom podataka tokom sesije. U sesiji se kreira funkcija get_db koja omogućava API rutama da pristupaju bazi podataka. Za potrebe frontend dijela aplikacije, postoji constants.js fajl u kojem je definisan base_url koji se koristi u JavaScript funkcijama za komunikaciju sa backend-om putem API-ja. Ovaj pristup omogućava efikasnu i sigurnu komunikaciju između frontend-a i backend-a u projektu “Vozni Park”.
+
+## DOCKER
+
+Docker je alat za kontejnerizaciju koji omogućava pakovanje i izvršavanje aplikacija u izolovanim okruženjima zvanim kontejnerima. U projektu “Vozni Park”, koristimo Docker za upravljanje backend, frontend i nginx servisima. docker-compose.yaml fajl definiše kako se ovi servisi pokreću i povezuju, dok se Dockerfile-backend, Dockerfile-frontend i Dockerfile-nginx koriste za konfiguraciju svakog pojedinačnog servisa. Ovo omogućava konzistentno razvojno okruženje i jednostavan deployment aplikacije, što doprinosi efikasnijem razvoju i upravljanju infrastrukturom projekta.
+
+## ZAKLJUČAK
+
+U ovom seminarskom radu smo kroz praktičnu primenu različitih tehnologija kreirali funkcionalan sistem za upravljanje voznim parkom. Kombinacija frontend tehnologija kao što su HTML, CSS, JavaScript i Bootstrap omogućila je kreiranje korisnički prijatnog i responzivnog interfejsa, dok je backend implementiran pomoću FastAPI framework-a i Python jezika, pružajući stabilnu podršku za CRUD operacije. Korišćenje MySQL baze podataka omogućilo je sigurno i efikasno skladištenje podataka o voznom parku. <BR> <BR>
+
+Ovaj projekat predstavlja dobar primer kako se moderne tehnologije mogu koristiti za izgradnju sistema za upravljanje resursima, koji je skalabilan, jednostavan za korišćenje i lako prenosiv. Kroz ovaj rad smo unapredili svoje tehničke veštine u frontend, backend razvoju, upravljanju bazama podataka i korišćenju kontejnerizacije putem Docker-a I kasnijem razvoju i upravljanju infrastrukturom projekta.
+
