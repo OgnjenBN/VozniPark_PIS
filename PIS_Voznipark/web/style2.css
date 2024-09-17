@@ -1,0 +1,41 @@
+root {
+    --sidebar-bg-light: #f4f4f4;
+    --sidebar-text-light: #000;
+    --sidebar-border-light: #ddd;
+    --button-bg-light: #ddd;
+    --button-text-light: #000;
+
+    --sidebar-bg-dark: #222;
+    --sidebar-text-dark: #eee;
+    --sidebar-border-dark: #444;
+    --button-bg-dark: #444;
+    --button-text-dark: #eee;
+}
+
+.w3-sidebar {
+    background-color: var(--sidebar-bg-light);
+    color: var(--sidebar-text-light);
+    border-right: 1px solid var(--sidebar-border-light);
+}
+
+.w3-bar-item {
+    color: var(--sidebar-text-light);
+}
+
+.w3-bar-item:hover {
+    background-color: var(--button-bg-light);
+}
+
+body.dark-mode .w3-sidebar {
+    background-color: var(--sidebar-bg-dark);
+    color: var(--sidebar-text-dark);
+    border-color: var(--sidebar-border-dark);
+}
+
+body.dark-mode .w3-bar-item {
+    color: var(--sidebar-text-dark);
+}
+
+body.dark-mode .w3-bar-item:hover {
+    background-color: var(--button-bg-dark);
+}
