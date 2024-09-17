@@ -282,7 +282,7 @@ function filterVehicles() {
 
 MySQL je popularni relacioni sistem upravljanja bazama podataka koji omogućava efikasno upravljanje podacima putem SQL upita. 
 
-![Struktura baze podataka](PIS_Voznipark/images/tvoja_slika.png)
+![Opis slike](images/baza.png)
 
 
 U projektu “Vozni Park”, veza sa bazom podataka ostvaruje se kroz **.env** fajl koji sadrži potrebne informacije kao što su link do baze, korisničko ime i lozinka. Ove informacije se koriste za uspostavljanje veze sa bazom podataka tokom sesije. U sesiji se kreira funkcija get_db koja omogućava API rutama da pristupaju bazi podataka. Za potrebe frontend dijela aplikacije, postoji constants.js fajl u kojem je definisan base_url koji se koristi u JavaScript funkcijama za komunikaciju sa backend-om putem API-ja. Ovaj pristup omogućava efikasnu i sigurnu komunikaciju između frontend-a i backend-a u projektu “Vozni Park”.
