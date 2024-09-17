@@ -222,3 +222,56 @@ body.dark-mode th, body.dark-mode td {
     color: var(--text-color);
 }
 ```
+
+U našoj aplikaciji, **JavaScript** fajlovi sadrže funkcije koje obavljaju osnovne CRUD operacije (kreiranje, čitanje, ažuriranje, brisanje) i omogućavaju otvaranje modala za dodavanje i izmjenu podataka. Ove funkcije su implementirane na sledeći način: <br>
+**•	Fetch Podaci**: Svaka funkcija za komunikaciju sa backendom koristi fetch API kako bi slala i primala podatke sa servera. <br
+**•	Get:** Funkcija getVozila koristi fetch za dohvat podataka sa servera (GET metoda). Nakon uspješnog dobijanja podataka, tabela se popunjava podacima. <br>
+**•	Insert**: Funkcija insertVozilo koristi fetch za slanje podataka na server (POST metoda). Podaci se šalju u JSON formatu, a prije slanja provjerava se da li su sva polja popunjena. <br>
+**•	Update**: Funkcija updateVozilo koristi fetch za ažuriranje podataka na serveru (PUT metoda). Kao i kod unosa, podaci se šalju u JSON formatu i provjerava se da li su sva polja popunjena.<br>
+**•	Delete**: Funkcija deleteVozilo koristi fetch za brisanje podataka sa servera (DELETE metoda). <br>
+**•	Error Handling**: Svaka fetch operacija uključuje try-catch blokove kako bi se hvatale i prikazivale greške. Ako dođe do greške prilikom komunikacije sa serverom, prikazuje se odgovarajuća poruka. <br>
+**•	Modali**: Funkcije openUpdateModal i clearInputFields koriste Bootstrap modal za prikaz i unos podataka. Funkcija openUpdateModal otvara modal i popunjava ga podacima odabranog entiteta, dok clearInputFields čisti input polja nakon zatvaranja modala. <br>
+**•	Validacija**: Prije slanja podataka na server, provjerava se da li su sva obavezna polja popunjena. Ako neko polje nije popunjeno, baca se greška i prikazuje odgovarajuća poruka korisniku. Ovaj pristup osigurava da podaci budu pravilno poslani i primljeni sa servera, te da korisnici imaju intuitivno iskustvo prilikom korišćenja aplikacije.
+
+JS kod za tamni režim i filterisanje.
+
+```
+const toggleButton = document.getElementById('toggle-dark-mode');
+
+// Провера да ли постоји сачувана преференција за режим
+if (localStorage.getItem('darkMode') === 'enabled') {
+    document.body.classList.add('dark-mode');
+}
+
+// Функција за пребацивање режима
+toggleButton.addEventListener('click', () => {
+    document.body.classList.toggle('dark-mode');
+
+  
+});
+
+```
+```
+function filterVehicles() {
+    const brand = document.getElementById('filterBrand').value.toLowerCase();
+    const fuelType = document.getElementById('filterFuelType').value;
+    const status = document.getElementById('filterStatus').value;
+    const rows = document.querySelectorAll('#tableBody tr');
+    
+    rows.forEach(row => {
+        const rowBrand = row.querySelector('td:nth-child(2)').textContent.toLowerCase();  
+        const rowFuelType = row.querySelector('td:nth-child(7)').textContent.toLowerCase();  // Tip goriva je 7. kolona
+        const rowStatus = row.querySelector('td:nth-child(8)').textContent.toLowerCase();  // Status je 8. kolona
+        
+        const brandMatch = (brand === 'all' || rowBrand === brand);
+        const fuelTypeMatch = (fuelType === 'all' || rowFuelType === fuelType);
+        const statusMatch = (status === 'all' || rowStatus === status);
+        
+        if (brandMatch && fuelTypeMatch && statusMatch) {
+            row.style.display = '';
+        } else {
+            row.style.display = 'none';
+        }
+    });
+}
+```
