@@ -53,6 +53,7 @@ class Vozac(Base):
     radni_nalozi = relationship('RadniNalog', back_populates='vozac')
 ```
 <br>
+
 **ŠEME** za radne naloge definišu strukturu i validaciju podataka pomoću Pydantica. Klase se kreiraju kao naslednici BaseModel iz Pydantica i predstavljaju modele podataka sa atributima i validacionim pravilima. Enumeracija (StatusRadnogNalogaEnum) definiše tri moguća statusa radnog naloga: otvoren, u toku, i završen. Ovo osigurava da atribut statusa može imati samo dozvoljene vrijednosti. Bazična klasa (RadniNalogBase) sadrži osnovne atribute radnog naloga, uključujući ID vozila i vozača, opis zadatka, datum i vreme izdavanja, rok završavanja i status. Klasa za kreiranje (RadniNalogCreate) nasleđuje bazičnu klasu i koristi se za validaciju prilikom kreiranja novih radnih naloga. Klasa za izlazne podatke (RadniNalogOut) dodaje dodatni atribut id i koristi se za povratne podatke prema klijentu. Ova struktura omogućava striktno definisanje i validaciju podataka, čineći aplikaciju sigurnijom i pouzdanijom. <br>
 
 ```
@@ -77,4 +78,39 @@ class RadniNalogOut(RadniNalogBase):
     
     class Config:
        from_attributes = True
+```
+<br>
+
+**Db fajl** konfiguriše vezu sa MySQL bazom podataka koristeći SQLAlchemy i čita vrijednosti iz .env fajla za postavljanje parametara baze. Prvo se učitavaju vrijednosti iz .env fajla, uključujući URL baze podataka. Zatim se kreira engine koji povezuje SQLAlchemy sa bazom podataka. SessionLocal je konfigurisan za kreiranje sesija sa bazom, sa opcijama autocommit=False i autoflush=False za ručno upravljanje transakcijama i osvježavanjem podataka. Base je deklarativna baza klasa iz koje će sve SQLAlchemy klase modela naslijediti. Funkcija get_db definiše zavisnost koja upravlja životnim ciklusom sesije baze podataka, otvarajući sesiju prije operacija sa bazom i zatvarajući je nakon završetka operacija.
+
+*Sesija* 
+<br>
+
+```
+from sqlalchemy import create_engine
+from sqlalchemy.orm import sessionmaker
+from sqlalchemy.ext.declarative import declarative_base
+from dotenv import load_dotenv
+import os
+
+load_dotenv(dotenv_path=os.path.join(os.path.dirname(__file__), '.env'))
+
+MYSQL_ROOT_PASSWORD = os.getenv("MYSQL_ROOT_PASSWORD")
+MYSQL_DATABASE = os.getenv("MYSQL_DATABASE")
+
+DATABASE_URL = os.getenv("DATABASE_URL")
+
+
+engine = create_engine(DATABASE_URL)
+SessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=engine)
+
+Base = declarative_base()
+
+# Dependency
+def get_db():
+    db = SessionLocal()
+    try:
+        yield db
+    finally:
+        db.close()
 ```
