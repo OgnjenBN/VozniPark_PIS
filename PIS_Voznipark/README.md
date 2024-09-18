@@ -58,7 +58,7 @@ class Vozac(Base):
 
 **ŠEME** za radne naloge definišu strukturu i validaciju podataka pomoću Pydantica. Klase se kreiraju kao naslednici BaseModel iz Pydantica i predstavljaju modele podataka sa atributima i validacionim pravilima. Enumeracija (StatusRadnogNalogaEnum) definiše tri moguća statusa radnog naloga: otvoren, u toku, i završen. Ovo osigurava da atribut statusa može imati samo dozvoljene vrijednosti. Bazična klasa (RadniNalogBase) sadrži osnovne atribute radnog naloga, uključujući ID vozila i vozača, opis zadatka, datum i vreme izdavanja, rok završavanja i status. Klasa za kreiranje (RadniNalogCreate) nasleđuje bazičnu klasu i koristi se za validaciju prilikom kreiranja novih radnih naloga. Klasa za izlazne podatke (RadniNalogOut) dodaje dodatni atribut id i koristi se za povratne podatke prema klijentu. Ova struktura omogućava striktno definisanje i validaciju podataka, čineći aplikaciju sigurnijom i pouzdanijom. <br>
 
-```
+```python
  class StatusRadnogNalogaEnum(str, Enum):
     otvoren = 'otvoren'
     u_toku = 'u toku'
@@ -88,7 +88,7 @@ class RadniNalogOut(RadniNalogBase):
 *Sesija* 
 <br>
 
-```
+```python
 ffrom sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
 from sqlalchemy.ext.declarative import declarative_base
@@ -114,7 +114,7 @@ def get_db():
 
 **Main fajl** definiše osnovnu konfiguraciju FastAPI aplikacije. Kreira se FastAPI instanca sa prilagođenim URL-ovima za dokumentaciju i dodaje se CORS middleware koji omogućava zahtjeve sa svih origin-a. Funkcija startup_event inicijalizuje bazu podataka pri pokretanju aplikacije pozivom init_db(). Definiše se jednostavna root ruta koja vraća "Hello, World", a sve definisane API rute uključene su pomoću app.include_router (api_router). <br>
 
-```
+```python
 from fastapi import FastAPI
 from db import init_db
 from api.routes import api_router
@@ -154,7 +154,7 @@ Frontend aplikacija je ključna komponenta korisničkog interfejsa (UI) i odgovo
 
 HTML (HyperText Markup Language): HTML je korišćen za definisanje strukture web stranice. Svaka stranica sadrži osnovne elemente poput zaglavlja, tabela, formi i dugmadi koje korisnici koriste za pregled podataka i interakciju sa sistemom. <br>
 
-```
+```HTML
 <table class="table">
                 <thead>
                     <tr>
