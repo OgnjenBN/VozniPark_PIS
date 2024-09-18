@@ -83,7 +83,7 @@ class RadniNalogOut(RadniNalogBase):
 ```
 <br>
 
-**Db fajl** konfiguriše vezu sa MySQL bazom podataka koristeći SQLAlchemy i čita vrijednosti iz .env fajla za postavljanje parametara baze. Prvo se učitavaju vrijednosti iz .env fajla, uključujući URL baze podataka. Zatim se kreira engine koji povezuje SQLAlchemy sa bazom podataka. SessionLocal je konfigurisan za kreiranje sesija sa bazom, sa opcijama autocommit=False i autoflush=False za ručno upravljanje transakcijama i osvježavanjem podataka. Base je deklarativna baza klasa iz koje će sve SQLAlchemy klase modela naslijediti. Funkcija get_db definiše zavisnost koja upravlja životnim ciklusom sesije baze podataka, otvarajući sesiju prije operacija sa bazom i zatvarajući je nakon završetka operacija.
+**Db fajl** - Ovaj kod kreira SQLAlchemy konekciju sa MySQL bazom koristeći create_engine i URL konekcije (u ovom slučaju MySQL baza na lokalnom serveru). Kroz sessionmaker, omogućava se kreiranje sesija za rad sa bazom, sa isključenim automatskim commit-ovanjem i flush-ovanjem. Base = declarative_base() postavlja osnovnu klasu za definisanje modela (tabela), a funkcija get_db služi kao dependency za FastAPI, obezbeđujući sesiju sa bazom za svaki API poziv, koja se zatim pravilno zatvara nakon upotrebe.
 
 *Sesija* 
 <br>
