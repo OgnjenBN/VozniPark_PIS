@@ -180,7 +180,7 @@ HTML (HyperText Markup Language): HTML je korišćen za definisanje strukture we
             </table>
 ```
 
-Sledećа  kod prikazuju HTML koda za filterisanje vozila putem padajućeg menija.
+Sledeće dvije slike prikazuju HTML koda za filterisanje vozila putem padajućeg menija i realan izgled tog koda
 ```
 <form id="filterFormVozila">
         <label for="filterBrand">Marka:</label>
@@ -201,6 +201,9 @@ Sledećа  kod prikazuju HTML koda za filterisanje vozila putem padajućeg menij
                     <option value="Dacia">Dacia</option>
         </select>
 ```
+
+![Filterisanje vozila](images/filter.png)
+
 
 **CSS** (Cascading Style Sheets): CSS je korišćen za stilizovanje HTML elemenata i kreiranje vizualno privlačnog i korisnički prijatnog interfejsa. Pomoću CSS-a definisane su boje, fontovi, raspored elemenata, kao i prilagođeni izgled različitih komponenata.
 
