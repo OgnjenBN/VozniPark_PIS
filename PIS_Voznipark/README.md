@@ -207,7 +207,8 @@ Sledeće dvije slike prikazuju HTML koda za filterisanje vozila putem padajućeg
 
 **CSS** (Cascading Style Sheets): CSS je korišćen za stilizovanje HTML elemenata i kreiranje vizualno privlačnog i korisnički prijatnog interfejsa. Pomoću CSS-a definisane su boje, fontovi, raspored elemenata, kao i prilagođeni izgled različitih komponenata.
 
-Takođe, implementirali smo opciju “Tamnog režima” gdje korisnik može izabrati opciju da li će interfejs biti prikazan u podrazumijevanoj bijeloj boji ili crnoj boji gdje manje zamara oči. U HTML smo dodali samo dugme za tamni režim, dok u CSS (kao I JavaScript-u) smo dodali kod za implementiranje tamnog režima.
+Takođe, implementirali smo opciju “Tamnog režima” gdje korisnik može izabrati opciju da li će interfejs biti prikazan u podrazumijevanoj bijeloj boji ili crnoj boji gdje manje zamara oči. U HTML smo dodali samo dugme za tamni režim, dok u CSS (kao I JavaScript-u) smo dodali kod za implementiranje tamnog režima. <br>
+Sledeće dvije slike su prikaz css koda za tamni režim i realan prikaz tamnog režima.
 ```
 body.dark-mode {
     --background-color: #333;
@@ -227,6 +228,8 @@ body.dark-mode th, body.dark-mode td {
     color: var(--text-color);
 }
 ```
+
+![Tamni režim](images/darkmode.png)
 
 U našoj aplikaciji, **JavaScript** fajlovi sadrže funkcije koje obavljaju osnovne CRUD operacije (kreiranje, čitanje, ažuriranje, brisanje) i omogućavaju otvaranje modala za dodavanje i izmjenu podataka. Ove funkcije su implementirane na sledeći način: <br>
 **•	Fetch Podaci**: Svaka funkcija za komunikaciju sa backendom koristi fetch API kako bi slala i primala podatke sa servera. <br
