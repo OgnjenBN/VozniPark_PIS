@@ -239,7 +239,7 @@ U našoj aplikaciji, **JavaScript** fajlovi sadrže funkcije koje obavljaju osno
 
 JS kod za tamni režim i filterisanje.
 
-```JavaScrpit
+```js
 const toggleButton = document.getElementById('toggle-dark-mode');
 
 // Провера да ли постоји сачувана преференција за режим
@@ -255,7 +255,7 @@ toggleButton.addEventListener('click', () => {
 });
 
 ```
-```JavaScrpit
+```js
 function filterVehicles() {
     const brand = document.getElementById('filterBrand').value.toLowerCase();
     const fuelType = document.getElementById('filterFuelType').value;
