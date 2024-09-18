@@ -38,7 +38,7 @@ Backend se sastoji od nekoliko ključnih komponenti: <br>
 **Modeli** podataka reprezentuju strukturu podataka koji se koriste u aplikaciji. Na primjer, model za vozača predstavlja klasu koja definiše strukturu tabele “vozaci” u bazi podataka. Ispod tabele definisan je odnos sa modelom “RadniNalog” koji omogućava navigaciju između vozača i njegovih radnih naloga. Varijabla back_populates='vozac' omogućava obostranu vezu između dva modela. <br>
 
 
-```
+```python
 class Vozac(Base):
     __tablename__ = 'vozaci'
 
