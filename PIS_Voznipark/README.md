@@ -89,7 +89,7 @@ class RadniNalogOut(RadniNalogBase):
 <br>
 
 ```python
-ffrom sqlalchemy import create_engine
+from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
 from sqlalchemy.ext.declarative import declarative_base
 
@@ -242,12 +242,12 @@ JS kod za tamni režim i filterisanje.
 ```js
 const toggleButton = document.getElementById('toggle-dark-mode');
 
-// Провера да ли постоји сачувана преференција за режим
+
 if (localStorage.getItem('darkMode') === 'enabled') {
     document.body.classList.add('dark-mode');
 }
 
-// Функција за пребацивање режима
+// Funkcija za prebacivanje režima
 toggleButton.addEventListener('click', () => {
     document.body.classList.toggle('dark-mode');
 
