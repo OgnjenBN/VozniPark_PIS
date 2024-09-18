@@ -177,7 +177,7 @@ HTML (HyperText Markup Language): HTML je korišćen za definisanje strukture we
 ```
 
 Sledeće dvije slike prikazuju HTML koda za filterisanje vozila putem padajućeg menija i realan izgled tog koda
-```
+```HTML
 <form id="filterFormVozila">
         <label for="filterBrand">Marka:</label>
         <select id="filterBrand" onchange="filterVehicles()">
@@ -205,7 +205,7 @@ Sledeće dvije slike prikazuju HTML koda za filterisanje vozila putem padajućeg
 
 Takođe, implementirali smo opciju “Tamnog režima” gdje korisnik može izabrati opciju da li će interfejs biti prikazan u podrazumijevanoj bijeloj boji ili crnoj boji gdje manje zamara oči. U HTML smo dodali samo dugme za tamni režim, dok u CSS (kao I JavaScript-u) smo dodali kod za implementiranje tamnog režima. <br>
 Sledeće dvije slike su prikaz css koda za tamni režim i realan prikaz tamnog režima.
-```
+```CSS
 body.dark-mode {
     --background-color: #333;
     --text-color: #eee;
@@ -239,7 +239,7 @@ U našoj aplikaciji, **JavaScript** fajlovi sadrže funkcije koje obavljaju osno
 
 JS kod za tamni režim i filterisanje.
 
-```
+```JavaScrpit
 const toggleButton = document.getElementById('toggle-dark-mode');
 
 // Провера да ли постоји сачувана преференција за режим
@@ -255,7 +255,7 @@ toggleButton.addEventListener('click', () => {
 });
 
 ```
-```
+```JavaScrpit
 function filterVehicles() {
     const brand = document.getElementById('filterBrand').value.toLowerCase();
     const fuelType = document.getElementById('filterFuelType').value;
