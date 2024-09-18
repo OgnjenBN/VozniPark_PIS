@@ -232,7 +232,7 @@ body.dark-mode th, body.dark-mode td {
 ![Tamni režim](images/darkmode.png)
 
 U našoj aplikaciji, **JavaScript** fajlovi sadrže funkcije koje obavljaju osnovne CRUD operacije (kreiranje, čitanje, ažuriranje, brisanje) i omogućavaju otvaranje modala za dodavanje i izmjenu podataka. Ove funkcije su implementirane na sledeći način: <br>
-**•	Fetch Podaci**: Svaka funkcija za komunikaciju sa backendom koristi fetch API kako bi slala i primala podatke sa servera. <br
+**•	Fetch Podaci**: Svaka funkcija za komunikaciju sa backendom koristi fetch API kako bi slala i primala podatke sa servera. <br>
 **•	Get:** Funkcija getVozila koristi fetch za dohvat podataka sa servera (GET metoda). Nakon uspješnog dobijanja podataka, tabela se popunjava podacima. <br>
 **•	Insert**: Funkcija insertVozilo koristi fetch za slanje podataka na server (POST metoda). Podaci se šalju u JSON formatu, a prije slanja provjerava se da li su sva polja popunjena. <br>
 **•	Update**: Funkcija updateVozilo koristi fetch za ažuriranje podataka na serveru (PUT metoda). Kao i kod unosa, podaci se šalju u JSON formatu i provjerava se da li su sva polja popunjena.<br>
