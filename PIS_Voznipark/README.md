@@ -89,19 +89,12 @@ class RadniNalogOut(RadniNalogBase):
 <br>
 
 ```
-from sqlalchemy import create_engine
+ffrom sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
 from sqlalchemy.ext.declarative import declarative_base
-from dotenv import load_dotenv
-import os
 
-load_dotenv(dotenv_path=os.path.join(os.path.dirname(__file__), '.env'))
 
-MYSQL_ROOT_PASSWORD = os.getenv("MYSQL_ROOT_PASSWORD")
-MYSQL_DATABASE = os.getenv("MYSQL_DATABASE")
-
-DATABASE_URL = os.getenv("DATABASE_URL")
-
+DATABASE_URL="mysql+pymysql://root:@localhost/voznipark"
 
 engine = create_engine(DATABASE_URL)
 SessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=engine)
@@ -115,7 +108,9 @@ def get_db():
         yield db
     finally:
         db.close()
+        db.close()
 ```
+<br>
 **Main fajl** definiše osnovnu konfiguraciju FastAPI aplikacije. Kreira se FastAPI instanca sa prilagođenim URL-ovima za dokumentaciju i dodaje se CORS middleware koji omogućava zahtjeve sa svih origin-a. Funkcija startup_event inicijalizuje bazu podataka pri pokretanju aplikacije pozivom init_db(). Definiše se jednostavna root ruta koja vraća "Hello, World", a sve definisane API rute uključene su pomoću app.include_router (api_router). <br>
 
 ```
